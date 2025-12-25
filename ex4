@@ -1,0 +1,54 @@
+num = int(input("Введите натуральное число: "))
+
+count_3 = 0  #количество цифр 3
+count_last = 0  #количество последней цифры
+count_even = 0  #количество четных цифр
+big5 = 0  #сумма цифр > 5
+big7 = 1  #произведение цифр > 7
+count_0_5 = 0  #количество цифр 0 и 5
+
+#Находим последнюю цифру с помощью цикла
+temp_num = num
+while temp_num >= 10:
+    temp_num = temp_num // 10
+last_digit = temp_num
+
+#Перебор цифр
+working_num = num
+while working_num > 0:
+    #Получаем текущую цифру
+    digit = working_num % 10
+
+    #Подсчет цифр 3
+    if digit == 3:
+        count_3 += 1
+
+    #Подсчет последней цифры
+    if digit == last_digit:
+        count_last += 1
+
+    #Подсчет четных цифр
+    if digit % 2 == 0:
+        count_even += 1
+
+    #Сумма цифр > 5
+    if digit > 5:
+        big5 += digit
+
+    #Произведение цифр > 7
+    if digit > 7:
+        big7 *= digit
+
+    #Подсчет цифр 0 и 5
+    if digit == 0 or digit == 5:
+        count_0_5 += 1
+
+    #Убираем обработанную цифру
+    working_num = working_num // 10
+
+print("Количество цифр 3 в нём:", count_3)
+print("Сколько раз в нём встречается последняя цифра:", count_last)
+print("Количество чётных цифр:", count_even)
+print("Сумма его цифр, больших пяти:", big5)
+print("Произведение цифр, больших семи:", big7)
+print("Сколько раз в нём встречаются цифры 0 и 5 (всего суммарно):", count_0_5)
